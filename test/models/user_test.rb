@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   
 	def setup
 		@user = User.new(name: "Example User", email: "user@example.com",
-										 password: "qwertyui", password_confirmation: "qwertyui")
+										 password: "password", password_confirmation: "password")
 	end
 		
 	test "should be valid" do
@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
 	end
 	
 	test "email validation should accept valid addresses" do
-	valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+		valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]	
 	  valid_addresses.each do |valid_address|
 	  	@user.email = valid_address
@@ -56,5 +56,9 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+  	assert_not @user.authenticated?('')
+  end	
  
 end
