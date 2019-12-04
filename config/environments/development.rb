@@ -72,10 +72,11 @@ Rails.application.configure do
     port: '587',
     authentication: 'plain',
     # enable_starttls_auto: true,
-    user_name: '',
-    password: '',
+    user_name: 'richa.16cs050@gmail.com',
+    password: '8741065798',
     domain: 'gmail.com',
   }
   # Use this if developing on localhost.
   # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 end
+    
